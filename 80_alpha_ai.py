@@ -1,9 +1,4 @@
-# Get a name from the user and say the name again 
-# show the information realted to search, will be searched by wikipedia
-# open or operate all the command of a laptop
-# add some funny things 
-# open video and audio as per the user command
-
+import random
 from msilib.schema import Error
 import webbrowser
 import speech_recognition as sr
@@ -11,9 +6,11 @@ import wikipedia
 import pyttsx3
 import time
 import pywhatkit
+import calendar
+import pyjokes
+
 
 class Alpha:
-
 
     def __init__(self,name,bday):
         self.name = name
@@ -28,8 +25,7 @@ class Alpha:
         if 'yes' in corrction:
             self.name = newname
             self.voice_Speak(f"Your new name is:{newname}")
-
-
+            
     def wikipedia_eng(self,search_wiki):
         try:
             page = wikipedia.page(search_wiki)
@@ -39,7 +35,6 @@ class Alpha:
         except:
             print(f"Error:{Error}")
 
-
     def link(self,link):
         webbrowser.get('C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s').open(link)
 
@@ -48,7 +43,7 @@ class Alpha:
         voices = engine.getProperty('voices')
         engine.setProperty('voice',voices[1].id)
         engine.setProperty('rate',150)
-        print(f"{command}\n")
+        print(f"{command}")
         engine.say(command)
         engine.runAndWait()
 
@@ -60,7 +55,7 @@ class Alpha:
                 voice_c.adjust_for_ambient_noise(source)
                 audio = voice_c.listen(source)
                 audio_google = voice_c.recognize_google(audio)
-                print(audio_google)
+                print(f"{audio_google}\n")
         except:
             self.voice_Speak("Speak louder and properly...")
         
@@ -71,22 +66,30 @@ class Alpha:
         self.voice_Speak("Hello, I am Alpha...")
         self.voice_Speak("say Hello Alpha to start me...")
 
+        i=0
+
         while 'hello alpha' in self.voice_data():
        
             self.voice_Speak(f"{self.name} How may i help you?")
-            voice_command = self.voice_data()
+
+            if i == 1:
+                voice_command = self.voice_data()
+                i=0
 
             if 'how are you' in voice_command:
                 self.voice_Speak(f'I am awesome...{self.name}')
 
             elif 'you do' in voice_command:
                 self.voice_Speak("I can do all these things...")
-                self.voice_Speak("You can ask me for your name and birthday")
-                self.voice_Speak("I can play music for you, on YouTube , spotify , apple music and Amazon music")
+                self.voice_Speak("You can ask me for your Name and Birthday")
+                self.voice_Speak("I can create Contacts for you.")
+                self.voice_Speak("I can play music for you, on YouTube , spotify , Apple music and Amazon music")
                 self.voice_Speak("I can send a whatsapp message for you!!!")
                 self.voice_Speak("I can tell you the current time and date!!!")
                 self.voice_Speak("I can search anything on web.")
                 self.voice_Speak("I can search music for you on your favorite platform.")
+                self.voice_Speak("I can tell you jokes...")
+                self.voice_Speak("I can choose Random Number for you...")
                 
 
             elif 'made you' in voice_command:
@@ -199,6 +202,52 @@ class Alpha:
             elif 'thank you' in voice_command:
                 self.voice_Speak("You're welcome")
 
+            elif 'contact' in voice_command:
+                self.voice_Speak("Opening contacts")
+                self.voice_Speak("To Add new contact, say Create contact")
+                self.voice_Speak("To Open contact list, say View Contact list")
+                choice  = self.voice_data()
+
+                if 'create' in choice:
+                    contact = {}
+                    self.voice_Speak("Enter Name:")
+                    name = input("")
+                    self.voice_Speak("Enter Number:")
+                    num = input("")
+                    contact_lst = contact.update({name:num})
+                    with open("Contacts.txt",'a') as r:
+                       r = r.write(str(contact_lst))
+
+                    self.voice_Speak("Contact is added.")
+
+                if 'view' in choice:
+                    with open("Contacts.txt",'r') as r:
+                       r = r.read(contact_lst)
+
+            elif 'calendar' in voice_command:
+                self.voice_Speak("Opening Calendar")
+                print(calendar.calendar(2022,2,1,6))
+
+            elif 'joke' in voice_command:
+                my_joke = pyjokes.get_joke(language="en",category="all")
+                self.voice_Speak("Here is one joke for you...")
+                self.voice_Speak(my_joke)
+                
+            elif 'I love you' in voice_command:
+                self.voice_Speak("Sorry this is not possible, i have crush on siri...")
+
+            elif 'random number' in voice_command:
+
+                try:
+                    
+                    self.voice_Speak("Choosing random number for you...")
+                    rand = random.randint(0,1000)
+                    self.voice_Speak(rand)
+
+                except:
+
+                    self.voice_Speak("Unable to choose random number... try again...")
+
             elif 'bye' in voice_command:
                 self.voice_Speak("See you later... Bye Bye")
                 exit()
@@ -206,7 +255,19 @@ class Alpha:
             else:
                 self.voice_Speak("I am still improving my self, so i can not perform this task temporarily... but i will try my best next time!!!")
                 exit()
+            
+            i+=1
      
 
 dhrumil = Alpha("Dhrumil","30 july 2004")
 dhrumil.voice_Com()
+
+
+'''
+Modules needed
+Subprocess:- This module is used for getting system subprocess details which are used in various commands i.e Shutdown, Sleep, etc. This module comes built-in with Python. 
+ 
+Ecapture:- To capture images from your Camera. To install this module type the below command in the terminal.
+pip install ecapture
+
+'''
