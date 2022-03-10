@@ -65,17 +65,13 @@ class Alpha:
         
         self.voice_Speak("Hello, I am Alpha...")
         self.voice_Speak("say Hello Alpha to start me...")
-
-        i=0
-
+        
         while 'hello alpha' in self.voice_data():
        
             self.voice_Speak(f"{self.name} How may i help you?")
 
-            if i == 1:
                 voice_command = self.voice_data()
-                i=0
-
+             
             if 'how are you' in voice_command:
                 self.voice_Speak(f'I am awesome...{self.name}')
 
