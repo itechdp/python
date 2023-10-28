@@ -12,6 +12,4 @@ class Programmer:
 
 
 dhrumil = Programmer("dhrumil","gta7")  
-fannie = Programmer("fannie","beauty")
 dhrumil.getInfo()
-fannie.getInfo()
