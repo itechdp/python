@@ -106,13 +106,6 @@ dhrumil.cusid = 1
 dhrumil.accBal = 500
 dhrumil.fbal = ""
 
-fannie.name = "Fannie tony k"
-fannie.dob = "23/03/2006"
-fannie.mobileno = +919879606710
-fannie.pin = 2330
-fannie.cusid = 2
-fannie.accBal = 500
-
 rina.name = "Rina Piyush Patel"
 rina.dob = "27/04/1983"
 rina.mobileno = +9188449512
@@ -154,58 +147,3 @@ elif cusid == 4 and pin == 1234:
 
 else:
     print("\nInvalid Customer Id or Pin")
-
-
-# from ast import Add
-
-
-# class CustomerInfo:
-    
-#     def cusInfo(self):
-#         name = "name"
-#         dob = "dob"
-#         mobileNo = 0
-#         pin = 0 
-
-#         self.name = name
-#         self.dob = dob
-#         self.mobileNo = mobileNo
-#         self.pin = pin
-
-
-# class Withdrawl(CustomerInfo):
-#       accBal = 0
-#       curBal = 500
-
-#       @property
-#       def AddBal(self):
-#         self.accBal = self.accBal + self.curBal
-
-#         with open("baldeposit.txt","w") as f: 
-#             f = f.write(str(self.accBal))
-            
-        
-#         return self.accBal
-      
-
-# class Deposit(Withdrawl):
-
-#     @property
-#     def __sub__(self):
-#         self.accBal = self.accBal - self.curBal
-#         with open("balwithdrwal.txt","w") as f: 
-#             f = f.write(str(self.accBal)) 
-#         return self.accBal
-    
-
-# class MachineInt(Deposit):
-   
-#     def mcI(self):
-#         print(self.AddBal)
-#         # print(self.__sub__)
-        
-
-
-# dhrumil = MachineInt()
-# dhrumil.accBal = int(input("Enter Your Amount"))
-# dhrumil.mcI()
