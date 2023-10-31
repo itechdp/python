@@ -94,7 +94,6 @@ class CustomerDetail:
 
 ####### Customer Information ######
 dhrumil = CustomerDetail()
-fannie = CustomerDetail()
 rina = CustomerDetail()
 krishna = CustomerDetail()
 
