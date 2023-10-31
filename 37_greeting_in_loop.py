@@ -1,4 +1,5 @@
-l1 = ["dhrumil","rian","reena","fannie"]
+l1 = ["dhrumil","rian","reena"]
+
 
 for item in l1:
     if item.startswith("r"):
